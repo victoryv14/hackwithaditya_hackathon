@@ -1,3 +1,3 @@
-export * from './types/scoring.ts';
-export * from './config/scoringConfig.ts';
-export * from './utils/scoringEngine.ts';
+export * from './types/scoring';
+export * from './config/scoringConfig';
+export * from './utils/scoringEngine';
