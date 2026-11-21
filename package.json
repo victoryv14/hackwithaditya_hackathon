@@ -1,0 +1,18 @@
+{
+  "name": "lrss-scoring-engine",
+  "version": "1.0.0",
+  "description": "Regional Landslide Risk Scaling System (LRSS) - Mathematical Scoring Engine",
+  "type": "module",
+  "scripts": {
+    "test": "node --test --experimental-strip-types src/utils/scoringEngine.test.ts"
+  },
+  "keywords": [
+    "landslide",
+    "risk-scaling",
+    "scoring-engine",
+    "ndma",
+    "geospatial"
+  ],
+  "author": "",
+  "license": "ISC"
+}
