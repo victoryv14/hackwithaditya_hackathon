@@ -43,6 +43,27 @@ export const CorridorMap: React.FC<CorridorMapProps> = ({
   const defaultCenter: [number, number] = [30.165, 78.580];
   const defaultZoom = 11;
 
+  // Free basemap layers requiring zero API keys
+  const [basemap, setBasemap] = React.useState<'dark' | 'satellite' | 'street'>('dark');
+
+  const BASEMAP_CONFIGS = {
+    dark: {
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+      attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+      label: 'Dark Tactical'
+    },
+    satellite: {
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      attribution: 'Tiles &copy; Esri &mdash; Earthstar Geographics',
+      label: 'Satellite'
+    },
+    street: {
+      url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution: '&copy; OpenStreetMap contributors',
+      label: 'Street'
+    }
+  };
+
   // Filter segments based on legend selection
   const filteredSegments = activeTierFilter === 'ALL'
     ? segments
@@ -54,20 +75,39 @@ export const CorridorMap: React.FC<CorridorMapProps> = ({
       role="application"
       aria-label="NH-7 Corridor Risk Map Viewport"
     >
+      {/* 100% Free Basemap Selector (Zero API Key Required) */}
+      <div className="absolute top-3 right-3 z-[1000] flex items-center gap-1 bg-card/95 backdrop-blur-md border border-stroke p-1 rounded-md shadow-card font-mono text-[11px]">
+        {(['dark', 'satellite', 'street'] as const).map((mode) => (
+          <button
+            key={mode}
+            onClick={() => setBasemap(mode)}
+            className={`px-2 py-0.5 rounded transition-colors ${
+              basemap === mode 
+                ? 'bg-sky-600 text-white font-bold' 
+                : 'text-muted hover:text-primary hover:bg-elevated'
+            }`}
+          >
+            {BASEMAP_CONFIGS[mode].label}
+          </button>
+        ))}
+      </div>
+
       <MapContainer
         center={defaultCenter}
         zoom={defaultZoom}
         className="w-full h-full"
+        style={{ height: '100%', minHeight: '520px', width: '100%' }}
         zoomControl={true}
         attributionControl={true}
       >
         <MapFocusController selectedSegment={selectedSegment} />
 
-        {/* High-contrast dark topographic base tiles (CartoDB Dark Matter) */}
+        {/* Dynamic Free Basemap TileLayer */}
         <TileLayer
-          attribution='&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-          maxZoom={18}
+          key={basemap}
+          attribution={BASEMAP_CONFIGS[basemap].attribution}
+          url={BASEMAP_CONFIGS[basemap].url}
+          maxZoom={17}
         />
 
         {/* Render each segment as a high-visibility tactical polyline */}
