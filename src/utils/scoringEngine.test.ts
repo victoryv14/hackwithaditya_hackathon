@@ -8,9 +8,9 @@ import {
   evaluateSegmentFromRaw,
   evaluateSegment,
   evaluateCorridor,
-} from './scoringEngine';
-import { DEFAULT_SCORING_CONFIG } from '../config/scoringConfig';
-import type { RoadSegmentBaseline, RainfallInput } from '../types/scoring';
+} from './scoringEngine.ts';
+import { DEFAULT_SCORING_CONFIG } from '../config/scoringConfig.ts';
+import type { RoadSegmentBaseline, RainfallInput } from '../types/scoring.ts';
 
 describe('LRSS Scoring Engine (Section 2.3 of docs/PRD.pdf)', () => {
   describe('Test Case (a): Km 58.2 Sirobagarh Example', () => {

@@ -1,4 +1,4 @@
-import { DEFAULT_SCORING_CONFIG } from '../config/scoringConfig';
+import { DEFAULT_SCORING_CONFIG } from '../config/scoringConfig.ts';
 import type {
   RiskTier,
   RoadSegment,
@@ -8,7 +8,7 @@ import type {
   RiskDriver,
   SOPAction,
   ScoringWeightsConfig,
-} from '../types/scoring';
+} from '../types/scoring.ts';
 
 /**
  * Normalizes slope angle in degrees to a [0, 100] susceptibility index.
