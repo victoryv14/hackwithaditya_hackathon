@@ -1,106 +1,42 @@
 # LRSS – Landslide Risk Scaling System
 
-### An Interactive Geospatial Decision-Support Platform for Landslide Risk Assessment
+### Predict the Risk. Identify the Danger. Prioritize the Response. Protect Lives.
 
-LRSS (Landslide Risk Scaling System) is a map-based decision-support platform designed to help disaster management authorities identify vulnerable road segments, assess changing landslide risk conditions, and prioritize locations requiring attention.
+**An Interactive Geospatial Decision-Support Platform for Landslide Risk Assessment.**
 
-The system focuses on the NH-7 corridor connecting Rishikesh, Devprayag, and Srinagar in Uttarakhand, India. It combines terrain vulnerability, historical landslide information, rainfall triggers, and infrastructure exposure into an explainable risk assessment framework.
+## 1. Problem Statement
 
-The project is being developed as a hackathon prototype to demonstrate how geospatial visualization and dynamic risk assessment can support proactive landslide management.
+Landslides threaten lives, damage critical infrastructure, and disrupt transportation networks, particularly in India's mountainous regions.
 
----
+During periods of intense rainfall, identifying vulnerable locations and responding quickly becomes critical. However, information such as rainfall measurements, terrain conditions, and historical landslide records is often scattered across different sources.
 
-## Problem Statement
+This fragmentation makes it difficult for disaster management authorities to identify critical hotspots, assess changing risk conditions, and prioritize emergency response.
 
-Landslide-prone regions frequently face challenges during periods of intense rainfall. Although geological records, rainfall information, and historical landslide data are available, these sources are often fragmented.
+## 2. Our Solution
 
-This makes it difficult for disaster management authorities to:
+LRSS brings fragmented landslide-related information into a centralized geospatial platform.
 
-- Identify specific vulnerable road segments.
-- Understand how changing rainfall conditions influence landslide risk.
-- Prioritize critical locations for inspection and monitoring.
-- Understand the factors contributing to a particular risk level.
+It enables authorities to visualize vulnerable road segments, simulate rainfall conditions, identify high-risk hotspots, and understand the factors contributing to individual risk assessments.
 
-LRSS addresses these challenges through a centralized geospatial platform that visualizes localized risk conditions and provides explainable risk assessments.
+The goal is to support faster, better-informed decisions and proactive disaster management.
 
----
+## 3. Key Features
 
-## Key Features
+- **Interactive Geospatial Dashboard:** Visualizes 35 risk-coded road segments along the NH-7 corridor.
+- **Dynamic Rainfall Simulation:** Simulates 48-hour cumulative rainfall conditions (0–250 mm) and recalculates risk scores.
+- **Five-Tier Risk Classification:** Categorizes locations from Very Low to Very High risk.
+- **Top Five Critical Hotspots:** Identifies and ranks the five highest-risk road segments.
+- **Explain Why Analysis:** Displays contributing factors such as rainfall, slope gradient, historical landslide information, and infrastructure vulnerability.
 
-### 1. Interactive Geospatial Dashboard
-- Tactical dark-themed command-center interface.
-- Interactive geographical map displaying the NH-7 corridor.
-- 35 road segments with risk-coded polylines aligned with the highway.
-- Multiple map visualization modes:
-  - Dark Tactical
-  - Satellite
-  - Street
-- Interactive zoom, segment selection, and geographical navigation.
+## 4. Geographic Focus
 
-### 2. Dynamic Rainfall Simulation
-- Interactive 48-hour cumulative rainfall slider (0–250 mm).
-- Dynamic recalculation of risk scores as rainfall conditions change.
-- Preset scenarios:
-  - Dry Season – 20 mm
-  - Regional Monsoon – 85 mm
-  - Cloudburst Crisis – 165 mm
+**NH-7: Rishikesh – Devprayag – Srinagar, Uttarakhand, India**
 
-### 3. Five-Tier Risk Classification
+- Approximately 97 km of highway coverage.
+- 35 geographical road segments.
+- Key locations: Byasi, Totam, Devprayag, Sirobagarh, and Srinagar.
 
-The system classifies road segments into five operational risk categories:
-
-| Tier | Risk Level | Score |
-|---|---|---|
-| I | Very Low | 0–20 |
-| II | Low | 21–40 |
-| III | Moderate | 41–60 |
-| IV | High | 61–80 |
-| V | Very High | 81–100 |
-
-Each category is represented through a distinct, color-blind-conscious color scale for easier identification.
-
-### 4. Top Five Critical Hotspots
-- Dynamically ranks the five highest-risk road segments.
-- Identifies locations requiring greater attention.
-- Allows users to select individual hotspots directly from the dashboard.
-
-### 5. Explain Why – Risk Analysis
-Provides a detailed breakdown of the factors contributing to a selected segment's risk assessment.
-
-The inspection panel includes:
-- Operational Risk Index.
-- Dynamic Hazard Index.
-- Consequence Impact Index.
-- 48-hour cumulative rainfall.
-- Slope gradient and configured threshold.
-- Historical landslide information.
-- Transit bottleneck vulnerability.
-
-This makes the risk assessment more transparent and understandable.
-
----
-
-## System Architecture
-
-LRSS follows a client-side architecture in which the rainfall simulation, risk calculation, and interactive visualization operate within the web application.
-
-**Core Workflow:**
-
-Rainfall Simulation  
-↓  
-Dynamic Risk Calculation  
-↓  
-Five-Tier Risk Classification  
-↓  
-Geospatial Risk Visualization  
-↓  
-Hotspot Identification  
-↓  
-Explainable Risk Analysis
-
----
-
-## Technology Stack
+## 5. Technology Stack
 
 | Technology | Purpose |
 |---|---|
@@ -110,116 +46,96 @@ Explainable Risk Analysis
 | Tailwind CSS | Interface styling |
 | Leaflet | Interactive geospatial visualization |
 | GeoJSON | Road geometry representation |
-| JavaScript / TypeScript | Risk calculation and application logic |
 
----
+## 6. System Workflow
 
-## Geographic Focus
+Rainfall Simulation → Dynamic Risk Calculation → Risk Classification → Geospatial Visualization → Hotspot Identification → Explainable Risk Analysis
 
-**NH-7: Rishikesh – Devprayag – Srinagar, Uttarakhand, India**
-
-The prototype covers approximately 97 km of the selected highway corridor, represented through 35 road segments.
-
-The geographical demonstration includes important locations such as:
-- Byasi
-- Totam
-- Devprayag
-- Sirobagarh
-- Srinagar
-
-The prototype uses sample risk attributes and simulated rainfall scenarios to demonstrate the system's functionality.
-
----
-
-## Current Development Status
-
-The following components have been implemented:
-
-- [x] React + TypeScript project setup
-- [x] Tactical dark dashboard interface
-- [x] Interactive NH-7 corridor map
-- [x] 35 road segments with geographical alignment
-- [x] Five-tier risk classification
-- [x] Interactive risk filters
-- [x] Dynamic rainfall slider
-- [x] Rainfall scenario presets
-- [x] Live risk score recalculation
-- [x] Top Five Critical Hotspots
-- [x] Explain Why inspection panel
-
-**Upcoming Development:**
-- [ ] Priority Agency SOP Action Cards
-- [ ] Simulated emergency action dispatch and audit log
-- [ ] Mobile Citizen Advisory View
-- [ ] Final deployment and demonstration readiness
-
----
-
-## Running the Project Locally
+## 7. Getting Started
 
 ### Prerequisites
-- Node.js
+
+- Node.js (LTS version)
 - npm
 
 ### Installation
 
-1. Clone the repository:
+**Step 1: Clone the repository**
 
-   ```bash
-   git clone <repository-url>
-   ```
+```bash
+git clone <repository-url>
+```
 
-2. Navigate to the project directory:
+**Step 2: Navigate to the project directory**
 
-   ```bash
-   cd <project-folder>
-   ```
+```bash
+cd <project-folder>
+```
 
-3. Install dependencies:
+**Step 3: Install dependencies**
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
-4. Start the development server:
+**Step 4: Start the development server**
 
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
-5. Open the local URL displayed in your terminal.
+Open the local URL displayed in your terminal to access the application.
 
 ### Production Build
 
-To generate the production build:
+To generate the production-ready build:
 
 ```bash
 npm run build
 ```
 
----
+## 8. Development Status
 
-## Important Note
+### Implemented
 
-LRSS is currently a hackathon demonstration prototype. The corridor dataset includes sample risk attributes, and rainfall conditions are simulated through interactive controls.
+- Interactive geospatial dashboard.
+- NH-7 corridor visualization.
+- 35 geographical road segments.
+- Five-tier risk classification.
+- Dynamic rainfall simulation.
+- Critical hotspot identification.
+- Explainable risk analysis.
 
-The current prototype does not yet integrate live meteorological APIs, real-time sensor feeds, or operational emergency-response systems. Its risk scores are intended to demonstrate the proposed assessment framework rather than provide certified landslide predictions.
+### Upcoming
 
----
+- Priority Agency SOP Action Cards.
+- Simulated emergency dispatch and audit log.
+- Mobile Citizen Advisory View.
+- Final deployment.
 
-## Future Scope
+## 9. Prototype Limitations
 
-- Integration of real-time rainfall data and weather APIs.
-- Incorporation of geological susceptibility datasets and satellite-derived terrain information.
-- Integration of historical landslide datasets for improved risk assessment.
-- Implementation of agency-specific emergency action recommendations.
+LRSS is currently a hackathon demonstration prototype using sample risk attributes and simulated rainfall conditions.
+
+The current implementation does not yet integrate live meteorological APIs, real-time sensor feeds, or operational emergency-response systems.
+
+The displayed risk scores demonstrate the proposed assessment framework and should not be interpreted as certified landslide predictions.
+
+## 10. Future Scope
+
+- Integration of real-time rainfall and weather APIs.
+- Incorporation of geological susceptibility and satellite-derived terrain datasets.
+- Integration of historical landslide records.
+- Agency-specific emergency action recommendations.
 - Development of a citizen-facing mobile advisory interface.
-- Expansion to additional landslide-prone regions across India.
+- Expansion to other landslide-prone regions across India.
+
+## 11. Vision
+
+To transform fragmented geographical and environmental information into actionable insights, helping disaster management authorities identify vulnerable locations, understand emerging risks, and prioritize their response.
+
+**Because faster decisions and timely action can help save lives.**
 
 ---
-
-## Vision
-
-Our vision is to transform fragmented landslide-related information into actionable geographical insights, helping disaster management authorities identify vulnerable locations, understand emerging risks, and prioritize emergency response.
 
 **LRSS – Predict the Risk. Identify the Danger. Prioritize the Response. Protect Lives.**
